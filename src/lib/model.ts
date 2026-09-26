@@ -277,7 +277,7 @@ export function graphToJson(g: FocusGraph): string {
       spec.activate =
         ne.activate.flip === null
           ? g.nodes[ne.activate.to]
-          : { to: g.nodes[ne.activate.to] };
+          : { to: g.nodes[ne.activate.to], flip: g.switches[ne.activate.flip] };
     }
     if (Object.keys(spec).length > 0) edges[g.nodes[i]] = spec;
   });

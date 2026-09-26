@@ -42,7 +42,8 @@ export function nextState(g: FocusGraph, state: number, action: ActionKind): num
   if (!edge) return null;
   const bits = bitsOf(g, state);
   const nb = edge.flip === null ? bits : bits ^ (1 << edge.flip);
-  if (!visible(g, edge.to, bits)) return null;
+  // 可见性按翻转后的开关位集判断：激活可能让目标出现，也可能让目标隐藏
+  if (!visible(g, edge.to, nb)) return null;
   return stateOf(g, edge.to, nb);
 }
 
