@@ -42,7 +42,7 @@ export function nextState(g: FocusGraph, state: number, action: ActionKind): num
   if (!edge) return null;
   const bits = bitsOf(g, state);
   const nb = edge.flip === null ? bits : bits ^ (1 << edge.flip);
-  if (!visible(g, edge.to, bits)) return null;
+  if (!visible(g, edge.to, nb)) return null;
   return stateOf(g, edge.to, nb);
 }
 

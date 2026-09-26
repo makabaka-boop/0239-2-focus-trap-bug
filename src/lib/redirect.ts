@@ -54,7 +54,7 @@ export type RedirectPreview =
  */
 export function applyRedirect(g: FocusGraph, c: RedirectCandidate): FocusGraph {
   const edges: NodeEdges[] = g.edges.map((ne, i) =>
-    i === c.from ? { ...ne, [c.action]: { to: c.to, flip: null } } : ne,
+    i === c.from ? { ...ne, [c.action]: { to: c.to, flip: ne[c.action]!.flip } } : ne,
   );
   return { ...g, edges };
 }
